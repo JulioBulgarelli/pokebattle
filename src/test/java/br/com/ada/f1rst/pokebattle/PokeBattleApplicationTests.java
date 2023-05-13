@@ -11,6 +11,11 @@ class PokeBattleApplicationTests extends BaseTestContext {
     private ApplicationContext applicationContext;
 
     @Test
+    void executes() {
+        Assertions.assertDoesNotThrow(() -> PokeBattleApplication.main(new String[]{}));
+    }
+
+    @Test
     void contextLoads() {
         Assertions.assertNotNull(applicationContext);
     }

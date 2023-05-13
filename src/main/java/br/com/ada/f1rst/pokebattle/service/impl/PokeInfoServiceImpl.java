@@ -4,7 +4,7 @@ import br.com.ada.f1rst.pokebattle.client.PokeApiClient;
 import br.com.ada.f1rst.pokebattle.client.dto.LocationAreaEncounter;
 import br.com.ada.f1rst.pokebattle.client.dto.Pokemon;
 import br.com.ada.f1rst.pokebattle.mapper.PokeInfoMapper;
-import br.com.ada.f1rst.pokebattle.model.PokeInfo;
+import br.com.ada.f1rst.pokebattle.model.PokeInfoResponse;
 import br.com.ada.f1rst.pokebattle.service.PokeInfoService;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +20,13 @@ public class PokeInfoServiceImpl implements PokeInfoService {
     }
 
     @Override
-    public PokeInfo getInfo(String pokemonName) {
+    public PokeInfoResponse getInfo(String pokemonName) {
         Pokemon pokemon = pokeApiClient.getPokemonData(pokemonName);
         List<LocationAreaEncounter> locationAreaEncounters = pokeApiClient.getPokemonEncounters(pokemonName);
 
-        PokeInfo pokeInfo = PokeInfoMapper.INSTANCE.pokemonToPokeInfo(pokemon, locationAreaEncounters);
-        pokeInfo.setLocations(PokeInfoMapper.INSTANCE.convertLocations(locationAreaEncounters));
-//        pokeInfo.setTypes(PokeInfoMapper.INSTANCE.convertTypes(pokemon.getTypes()));
+        PokeInfoResponse pokeInfoResponse = PokeInfoMapper.INSTANCE.pokemonToPokeInfo(pokemon);
+        pokeInfoResponse.setLocations(PokeInfoMapper.INSTANCE.convertLocations(locationAreaEncounters));
 
-        return pokeInfo;
+        return pokeInfoResponse;
     }
 }

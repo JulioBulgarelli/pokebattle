@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class PokeInfoStat {
+public class PokeChallengeRequest {
 
-    private String name;
-    private Integer value;
+    private String challenger;
+    private String challenged;
 }

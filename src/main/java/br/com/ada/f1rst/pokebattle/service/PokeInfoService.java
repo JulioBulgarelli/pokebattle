@@ -1,8 +1,8 @@
 package br.com.ada.f1rst.pokebattle.service;
 
-import br.com.ada.f1rst.pokebattle.model.PokeInfo;
+import br.com.ada.f1rst.pokebattle.model.PokeInfoResponse;
 
 public interface PokeInfoService {
 
-    PokeInfo getInfo(String pokemonName);
+    PokeInfoResponse getInfo(String pokemonName);
 }
