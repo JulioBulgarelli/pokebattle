@@ -37,4 +37,15 @@ class PokeInfoResponseControllerTest extends BaseTestContext {
         .andExpect(status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("pikachu"));
     }
+
+    @Test
+    void throwsNotFound() throws Exception {
+        mvc.perform(
+            MockMvcRequestBuilders
+                .get("/api/info/{pokemon_name}", "asdasdasdas")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+        .andDo(print())
+        .andExpect(status().isNotFound());
+    }
 }

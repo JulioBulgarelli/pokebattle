@@ -39,4 +39,17 @@ class PokeChallengeResponseControllerTest extends BaseTestContext {
         .andExpect(status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.winner").value("pikachu"));
     }
+
+    @Test
+    void throwsNotFound() throws Exception {
+        mvc.perform(
+            MockMvcRequestBuilders
+                .post("/api/challenge")
+                .content("{\"challenger\":\"rattata\",\"challenged\":\"asdasdasaa\"}")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+        )
+        .andDo(print())
+        .andExpect(status().isNotFound());
+    }
 }

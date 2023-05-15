@@ -1,6 +1,6 @@
 # Poke Battle
 
-![LINE](https://img.shields.io/badge/coverage-98%25-green)
+![LINE](https://img.shields.io/badge/coverage-99%25-green)
 
 ## Funcionalidades
 ### Consulta de informações de um pokémon

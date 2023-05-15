@@ -37,4 +37,15 @@ class PokeEvolutionsResponseControllerTest extends BaseTestContext {
         .andExpect(status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.forms[*]").isArray());
     }
+
+    @Test
+    void throwsNotFound() throws Exception {
+        mvc.perform(
+            MockMvcRequestBuilders
+                .get("/api/evolutions/{pokemon_name}", "asdasdasdas")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+        .andDo(print())
+        .andExpect(status().isNotFound());
+    }
 }
